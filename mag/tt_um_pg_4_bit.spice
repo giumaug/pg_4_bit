@@ -1,0 +1,97 @@
+* NGSPICE file created from tt_um_pg_4_bit.ext - technology: sky130A
+
+v1 A4 GND pwl 0 0ps 1000ps 0 1050ps 1.8
+v2 B4 GND pwl 0 0ps
+v3 A3 GND pwl 0 0ps 
+v4 B3 GND pwl 0 0ps 1000ps 0 1050ps 1.8
+v5 A2 GND pwl 0 0ps 1000ps 0 1050ps 1.8
+v6 B2 GND pwl 0 0ps 1000ps 0 1050ps 1.8
+v7 A1 GND pwl 0 0ps 1000ps 0 1050ps 1.8
+v8 B1 GND pwl 0 0ps 1000ps 0 1050ps 1.8
+v9 VDD GND pwl 0 1.8
+
+Xpg4 GND GND GND 
++A1 B1 A2 B2 A3 B3 A4 B4 
++GND GND GND GND GND GND GND GND 
++G1 P1 G2 P2 G3 P3 G4 P4 VDD GND tt_um_pg_4_bit
+
+*.measure tran tpdr TRIG v(B1) VAL=0.1 RISE=1 TARG v(co) VAL=1.7 RISE=1
+*.measure tran tpdf TRIG v(B1) VAL=1.7 FALL=1 TARG v(co) VAL=0.1 FALL=1 CROSS=LAST
+
+.lib /opt/open_pdks/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+*.tran 10p 204800ps
+.options method=gear
+.tran 40ps 8000ps
+.save all
+
+.subckt sky130_fd_sc_hd__xor2_1 A B VGND VNB VPB VPWR X
+X0 X a_35_297# a_285_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.3 pd=2.6 as=0.177 ps=1.69 w=1 l=0.15
+**devattr s=10400,504 d=12000,520
+X1 X B a_285_47# VNB sky130_fd_pr__nfet_01v8 ad=0.25 pd=1.42 as=0.0878 ps=0.92 w=0.65 l=0.15
+**devattr s=3510,184 d=10010,284
+X2 a_35_297# B VGND VNB sky130_fd_pr__nfet_01v8 ad=0.0878 pd=0.92 as=0.138 ps=1.4 w=0.65 l=0.15
+**devattr s=6760,364 d=3510,184
+X3 a_117_297# B a_35_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.26 ps=2.52 w=1 l=0.15
+**devattr s=10400,504 d=5400,254
+X4 VPWR B a_285_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.177 pd=1.69 as=0.177 ps=1.69 w=1 l=0.15
+**devattr s=5400,254 d=10400,504
+X5 VGND A a_35_297# VNB sky130_fd_pr__nfet_01v8 ad=0.138 pd=1.4 as=0.0878 ps=0.92 w=0.65 l=0.15
+**devattr s=3510,184 d=3510,184
+X6 VGND a_35_297# X VNB sky130_fd_pr__nfet_01v8 ad=0.138 pd=1.4 as=0.25 ps=1.42 w=0.65 l=0.15
+**devattr s=10010,284 d=8320,388
+X7 a_285_297# A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.177 pd=1.69 as=0.177 ps=1.69 w=1 l=0.15
+**devattr s=5400,254 d=5400,254
+X8 VPWR A a_117_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.177 pd=1.69 as=0.135 ps=1.27 w=1 l=0.15
+**devattr s=5400,254 d=5400,254
+X9 a_285_47# A VGND VNB sky130_fd_pr__nfet_01v8 ad=0.0878 pd=0.92 as=0.138 ps=1.4 w=0.65 l=0.15
+**devattr s=3510,184 d=3510,184
+.ends
+
+.subckt sky130_fd_sc_hd__and2_1 A B VGND VNB VPB VPWR X
+X0 VPWR B a_59_75# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.103 pd=0.954 as=0.0567 ps=0.69 w=0.42 l=0.15
+**devattr s=2268,138 d=6662,278
+X1 X a_59_75# VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.475 pd=2.95 as=0.245 ps=2.27 w=1 l=0.15
+**devattr s=6662,278 d=19000,590
+X2 VGND B a_145_75# VNB sky130_fd_pr__nfet_01v8 ad=0.0878 pd=0.816 as=0.0567 ps=0.69 w=0.42 l=0.15
+**devattr s=2268,138 d=4472,208
+X3 a_59_75# A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.0567 pd=0.69 as=0.103 ps=0.954 w=0.42 l=0.15
+**devattr s=4704,280 d=2268,138
+X4 X a_59_75# VGND VNB sky130_fd_pr__nfet_01v8 ad=0.182 pd=1.86 as=0.136 ps=1.26 w=0.65 l=0.15
+**devattr s=4472,208 d=7280,372
+X5 a_145_75# A a_59_75# VNB sky130_fd_pr__nfet_01v8 ad=0.0567 pd=0.69 as=0.118 ps=1.4 w=0.42 l=0.15
+**devattr s=4704,280 d=2268,138
+.ends
+
+.subckt adder_1 A1 B1 A2 B2 A3 B3 A4 B4 G1 P1 G2 P2 G3 P3 G4 P4 VDD SUB
+Xsky130_fd_sc_hd__xor2_1_3 A4 B4 SUB SUB VDD VDD P4 sky130_fd_sc_hd__xor2_1
+Xsky130_fd_sc_hd__and2_1_0 A1 B1 SUB SUB VDD VDD G1 sky130_fd_sc_hd__and2_1
+Xsky130_fd_sc_hd__and2_1_1 A2 B2 SUB SUB VDD VDD G2 sky130_fd_sc_hd__and2_1
+Xsky130_fd_sc_hd__and2_1_2 A3 B3 SUB SUB VDD VDD G3 sky130_fd_sc_hd__and2_1
+Xsky130_fd_sc_hd__and2_1_3 A4 B4 SUB SUB VDD VDD G4 sky130_fd_sc_hd__and2_1
+Xsky130_fd_sc_hd__xor2_1_0 A1 B1 SUB SUB VDD VDD P1 sky130_fd_sc_hd__xor2_1
+Xsky130_fd_sc_hd__xor2_1_1 A2 B2 SUB SUB VDD VDD P2 sky130_fd_sc_hd__xor2_1
+Xsky130_fd_sc_hd__xor2_1_2 A3 B3 SUB SUB VDD VDD P3 sky130_fd_sc_hd__xor2_1
+.ends
+
+*.subckt tt_um_pg_4_bit clk ena rst_n ui_in[0] ui_in[1] ui_in[2] ui_in[3] ui_in[4]
+*+ ui_in[5] ui_in[6] ui_in[7] uio_in[0] uio_in[1] uio_in[2] uio_in[3] uio_in[4] uio_in[5]
+*+ uio_in[6] uio_in[7] uo_out[0] uo_out[1] uo_out[2] uo_out[3] uo_out[4] uo_out[5]
+*+ uo_out[6] uo_out[7] VDPWR VGND
+*Xadder_1_0 ui_in[0] ui_in[1] ui_in[2] ui_in[3] ui_in[4] ui_in[5] ui_in[6] ui_in[7]
+*+ uo_out[0] uo_out[1] uo_out[2] uo_out[3] uo_out[4] uo_out[5] uo_out[6] uo_out[7]
+*+ VDPWR VGND adder_1
+*.ends
+
+.subckt tt_um_pg_4_bit clk ena rst_n A1 B1 A2 B2 A3
++ B3 A4 B4 uio_in_0 uio_in_1 uio_in_2 uio_in_3 uio_in_4 uio_in_5
++ uio_in_6 uio_in_7 G1 P1 G2 P2 G3 P3
++ G4 P4 VDPWR VGND
+Xadder_1_0 A1 B1 A2 B2 A3 B3 A4 B4
++ G1 P1 G2 P2 G3 P3 G4 P4
++ VDPWR VGND adder_1
+.ends
+
+.GLOBAL GND
+
+.end
+

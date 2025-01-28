@@ -1,0 +1,75 @@
+Bitwise PG
+
+A1 1
+B1 2
+A2 3
+B2 4
+A3 5
+B3 6
+A4 7
+B4 8
+
+G1 9
+P1 10
+G2 11
+P2 12
+G3 13
+P3 14
+G4 15
+P4 16
+
+VDD 17
+GND 18
+
+
+group PG
+
+CI 1 
+P1 2 
+G1 3 
+P2 4 
+G2 5
+P3 6 
+G3 7
+P4 8 
+G4 9
+CO 10
+
+VDD 11
+GND 12
+
+adder
+
+CI 1 
+P1 2 
+G1 3 
+P2 4 
+G2 5 
+P3 6 
+G3 7 
+P4 8 
+S1 10 
+S2 11 
+S3 12 
+S4 13 
+
+VDD 14
+GND 15
+
+adder 4 bit
+A1 1
+B1 2
+A2 3
+B2 4
+A3 5
+B3 6
+A4 7
+B4 8
+CI 9
+S1 10
+S2 11
+S3 12
+S4 13
+CO 14
+VDD 15
+GND 16

@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+PG 4 bit network.
 
 ## How to test
 
-Explain how to use your project
+Set A,B 4 bit input values and check P,G 4 bit output.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+No external hardware.
