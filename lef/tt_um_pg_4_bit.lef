@@ -6,7 +6,7 @@ MACRO tt_um_pg_4_bit
   CLASS BLOCK ;
   FOREIGN tt_um_pg_4_bit ;
   ORIGIN 0.000 0.000 ;
-  SIZE 80.500 BY 112.880 ;
+  SIZE 161.000 BY 111.520 ;
   PIN clk
     DIRECTION INPUT ;
     USE SIGNAL ;
