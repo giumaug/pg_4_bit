@@ -9,7 +9,7 @@
 # Change the settings below to match your design:
 # ------------------------------------------------
 set TOP_LEVEL_CELL     tt_um_pg_4_bit
-set TEMPLATE_FILE      tt_block_1x1_pg.def
+set TEMPLATE_FILE      tt_block_1x2_pg.def
 set POWER_STRIPE_WIDTH 2um                 ;# The minimum width is 1.2um
 
 # Power stripes: NET name, x position. You can add additional power stripes for each net, as needed.
